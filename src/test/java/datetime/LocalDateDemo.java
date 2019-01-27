@@ -44,7 +44,5 @@ public class LocalDateDemo {
     // Returns time based on system clock zone
     Clock defaultClock = Clock.systemDefaultZone();
     System.out.println("Clock : " + LocalDateTime.now(defaultClock));
-
   }
-
 }
