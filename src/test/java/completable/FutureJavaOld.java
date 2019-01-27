@@ -6,51 +6,46 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-
 import org.junit.Test;
 
 public class FutureJavaOld extends CompletableFutureBase {
 
-	int result;
-	@Test
-	public void testFutureOldStyle() throws InterruptedException {		
-		Thread t = new Thread() {
-			public void run() {
-				result = slowInit();				
-			};
-		};
-		
-		t.start();
-		t.join();
-		System.out.println("futureTest() is finished: "+result);
-	}
-	
-	public void futureTest() 
-		throws InterruptedException, ExecutionException {
-	
-		Callable<Integer> r = this::slowInit;
-		ExecutorService es =
-				Executors.newFixedThreadPool(10);
-		Future<Integer> future = es.submit(r);
+  int result;
 
-		Integer res = future.get();
+  @Test
+  public void testFutureOldStyle() throws InterruptedException {
+    Thread t = new Thread() {
+      public void run() {
+        result = slowInit();
+      }
+    };
 
-		System.out.println("futureTest() is finished: "+res);
-	}
-	
-	public void promiseTestNext() 
-		throws InterruptedException, ExecutionException {
-			CompletableFuture<Void> future = 
-				CompletableFuture
-				.supplyAsync(this::slowInit)
-				.thenAccept(
-					  (res) -> { System.out.println("finished "+res); }
-					)
-				.thenRun(
-					() -> { System.out.println("look at results"); }
-				);
-			future.get();
-			System.out.println("promiseTestNext() is finished");
-	}
+    t.start();
+    t.join();
+    System.out.println("futureTest() is finished: " + result);
+  }
 
+  @Test
+  public void futureTest() throws InterruptedException, ExecutionException {
+
+    Callable<Integer> r = this::slowInit;
+    ExecutorService es = Executors.newFixedThreadPool(10);
+    Future<Integer> future = es.submit(r);
+
+    Integer res = future.get();
+
+    System.out.println("futureTest() is finished: " + res);
+  }
+
+  @Test
+  public void promiseTestNext() throws InterruptedException, ExecutionException {
+    CompletableFuture<Void> future =
+        CompletableFuture
+            .supplyAsync(this::slowInit)
+            .thenAccept((res) -> System.out.println("finished " + res))
+            .thenRun(() -> System.out.println("look at results"));
+
+    future.get();
+    System.out.println("promiseTestNext() is finished");
+  }
 }
