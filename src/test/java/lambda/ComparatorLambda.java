@@ -22,7 +22,7 @@ public class ComparatorLambda {
     };
 
     List<String> list = Arrays.asList("***", "**", "****", "*");
-    Collections.sort(list, comp);
+    list.sort(comp);
 
     for (String s : list) {
       System.out.println(s);

@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
-import java.util.stream.Collectors;
 
 public class ChainConsumers {
 
   public static void main(String... args) {
 
-    List<String> strings =
-        Arrays.asList("one", "two", "three", "four", "five");
+    List<String> strings = Arrays.asList("one", "two", "three", "four", "five");
 
     List<String> result = new ArrayList<>();
 
@@ -24,6 +22,6 @@ public class ChainConsumers {
       System.out.println(e + ", ");
     });
 
-    System.out.println(strings.stream().collect(Collectors.joining(", ")));
+    System.out.println(String.join(", ", strings));
   }
 }

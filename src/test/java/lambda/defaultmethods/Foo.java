@@ -9,5 +9,4 @@ public interface Foo {
   default void someOtherMethod() {
     System.out.println("Foo#someOtherMethod");
   }
-
 }

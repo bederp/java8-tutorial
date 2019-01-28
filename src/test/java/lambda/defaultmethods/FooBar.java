@@ -14,5 +14,4 @@ public class FooBar implements Foo, Bar {
   public void someMethod() {
     System.out.println("FooBar#someMethod");
   }
-
 }

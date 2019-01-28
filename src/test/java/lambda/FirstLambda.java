@@ -18,8 +18,9 @@ public class FirstLambda {
       }
     };
 
-    File dir = new File("./src/lambda");
+    File dir = new File("./src/test/java/lambda");
 
+    System.out.println("Working Directory = " + System.getProperty("user.dir"));
     File[] files = dir.listFiles(filter);
 
     for (File f : files) {
