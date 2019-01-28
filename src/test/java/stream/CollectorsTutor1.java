@@ -24,7 +24,7 @@ public class CollectorsTutor1 {
         BufferedReader reader =
             new BufferedReader(
                 new InputStreamReader(
-                    CollectorsTutor1.class.getResourceAsStream("people.txt")));
+                    CollectorsTutor1.class.getResourceAsStream("../people.txt")));
 
         Stream<String> stream = reader.lines();
     ) {

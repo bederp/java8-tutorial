@@ -32,7 +32,7 @@ public class CollectorsTutor {
         BufferedReader reader =
             new BufferedReader(
                 new InputStreamReader(
-                    CollectorsTutor.class.getResourceAsStream("people.txt")));
+                    CollectorsTutor.class.getResourceAsStream("../people.txt")));
 
         Stream<String> stream = reader.lines();
     ) {

@@ -8,9 +8,6 @@ public class Person {
 
   private Gender gender;
 
-  public Person() {
-  }
-
   public Person(String name, int age, String gender) {
     this.name = name;
     this.age = age;
@@ -32,10 +29,4 @@ public class Person {
   public Gender getGender() {
     return gender;
   }
-
-  public void setGender(Gender gender) {
-    this.gender = gender;
-  }
-
-
 }
