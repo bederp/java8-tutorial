@@ -28,18 +28,16 @@ public class IntStreamTutor {
   @Test
   public void testIntStream() {
 
-    int max = intStream().max().getAsInt();
+    Integer max = null;
     log(max);
-    assertEquals(max, 4);
+//    assertEquals(max, 4);
 
-    int avg = (int) intStream().average().getAsDouble();
+    Integer avg = null;
     log(avg);
-    assertEquals(avg, 3);
+//    assertEquals(avg, 3);
 
-    String distinct = intStream().distinct().
-        boxed().map(s -> s.toString()).collect(Collectors.joining(","));
+    String distinct = null;
     log(distinct);
-    assertEquals(distinct, "2,3,4");
-
+//    assertEquals(distinct, "2,3,4");
   }
 }

@@ -6,6 +6,7 @@ import java.util.stream.IntStream;
 
 public class ParallelTest {
 
+  public static final int MAX_RANGE = 1000000000;
   private static long tickTime = 0;
 
   public static void nextTick() {
@@ -18,11 +19,12 @@ public class ParallelTest {
   }
 
   public static void main(String[] args) {
+    System.out.println(Integer.valueOf(0 + ""));
+    System.out.println(0 - '0');
     nextTick();
 
     MutableNonSafeInt integer = new MutableNonSafeInt();
-    IntStream.range(0, 10000000)
-        .forEach(i -> integer.increase());
+    IntStream.range(0, MAX_RANGE).forEach(i -> integer.increase());
     System.out.println(integer.get());
 
     nextTick();
@@ -33,9 +35,8 @@ public class ParallelTest {
     // Now let's parallelize the stream:
     MutableNonSafeInt integer2 = new MutableNonSafeInt();
     int j = 0;
-    IntStream.range(0, 1000000)
+    IntStream.range(0, MAX_RANGE)
         .parallel()
-        .unordered()
         .forEach(i -> integer2.increase());
     System.out.println(integer2.get());
 
@@ -49,9 +50,8 @@ public class ParallelTest {
      * which is thread-safe, we get the following:
      */
     AtomicInteger integer3 = new AtomicInteger(0);
-    IntStream.range(0, 1000000)
+    IntStream.range(0, MAX_RANGE)
         .parallel()
-        .unordered()
         .forEach(i -> integer3.incrementAndGet());
     System.out.println(integer3.get());
 

@@ -62,8 +62,10 @@ public class ForkJoinSum {
     benchmark("sumArrayStreamParallel", array, ForkJoinSum::sumArrayStreamParallel);
     benchmark("sumArraySeq", array, ForkJoinSum::sumArraySeq);
     benchmark("sumArraySeq", array, ForkJoinSum::sumArraySeq);
+    benchmark("sumArraySeq", array, ForkJoinSum::sumArraySeq);
   }
 
+  @FunctionalInterface
   interface SumCalculator {
 
     long sumArray(int[] array);
